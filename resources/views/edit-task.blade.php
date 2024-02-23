@@ -1,4 +1,10 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Profile') }}
+        </h2>
+    </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
@@ -6,19 +12,15 @@
                     <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Create Task') }}
+            {{ __('Edit Task') }}
         </h2>
-
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __("Create your task to stay organizd.") }}
-        </p>
     </header>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
 
-    <form method="post" action="/test/store" class="mt-6 space-y-6">
+    <form method="post" action="/test/update/{{ $task->tasks_id}}" class="mt-6 space-y-6">
         @csrf
 
         <div>

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -31,8 +31,12 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/test/index', [TaskController::class, 'index'])->name('task.index');
 Route::get('/test/view', [TaskController::class, 'view'])->name('task.view');
-Route::post('/test/edit', [TaskController::class, 'edit'])->name('task.edit');
-Route::get('/test/create', [TaskController::class, 'showForm'])->name('task.create');
-Route::post('/test/delete', [TaskController::class, 'delete'])->name('task.delete');
+Route::post('/test/store', [TaskController::class, 'store'])->name('task.store');
+
+Route::get('/test/{tasks_id}', [TaskController::class, 'showSingleTask']);
+Route::get('/test/edit/{tasks_id}', [TaskController::class, 'edit'])->name('task.edit');
+Route::post('/test/update/{tasks_id}', [TaskController::class, 'update'])->name('task.update');
+Route::post('/test/delete/{tasks_id}', [TaskController::class, 'delete'])->name('task.delete');
+
 
 require __DIR__.'/auth.php';
