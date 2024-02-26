@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tasks', function (Blueprint $table) {
-            $table->id('tasks_id');
-            $table->string('taskname');
+            $table->id('id');
+            $table->string('task_name');
             $table->date('due_date');
             $table->string('description');
             $table->foreignId('users_id')->constrained('users')->nullable();

@@ -15,7 +15,7 @@
       <div class="container text-center mt-5">
             <ul class="list-group">
                 <li class="list-group-item list-group-item-dark mt-5" aria-current="true">Task Name</li>
-                <li class="list-group-item">{{ $task->taskname }}</li>
+                <li class="list-group-item">{{ $task->task_name }}</li>
             </ul>
             <ul class="list-group">
                 <li class="list-group-item list-group-item-dark mt-5" aria-current="true">Description</li>
