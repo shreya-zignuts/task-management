@@ -6,7 +6,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px text-lg sm:ms-10 sm:flex">
                     <x-nav-link :href="route('task.index')">
-                        {{ __('My Task') }}
+                        {{ __('Stay Organized') }}
                     </x-nav-link>
                 </div>
             </div>

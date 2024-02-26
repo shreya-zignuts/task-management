@@ -13,7 +13,7 @@ class TaskController extends Controller
     public function index()
     {
         // $tasks = auth()->user()->tasks;
-        $tasks=Task::all();
+        $tasks=Task::where('users_id', auth()->user()->id)->get();
         return view('indexPage', compact('tasks'));
     }
 
@@ -33,7 +33,7 @@ class TaskController extends Controller
         $incomingFields['description'] = strip_tags($incomingFields['description']);
         $incomingFields['due_date'] = strip_tags($incomingFields['due_date']);
         $incomingFields['users_id'] = auth()->id();
-        
+
         $newTask = Task::create($incomingFields);
 
         return redirect()->route('task.index')->with('success', 'Task inserted successfully');

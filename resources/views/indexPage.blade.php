@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Task Management</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -12,7 +12,7 @@
     <body>
         <div class="container text-center">
             <h2 class="text-lg font-medium text-gray-900 mt-5">
-                {{ __('Stay Organized') }}
+                {{ __('My Tasks') }}
              </h2>
             <table class="table table-secondary table-bordered mt-3">
                 <thead class="table-dark">

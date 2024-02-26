@@ -10,7 +10,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Create your task to stay organizd.") }}
+            {{ __("Create your task to stay organized.") }}
         </p>
     </header>
 
