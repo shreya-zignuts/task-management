@@ -28,10 +28,10 @@
                 <tbody>
                     @foreach ($tasks as $task)
                     <tr>
-                        <td>{{ $task->task_name }}</td>
+                        <td>{{ $task->title }}</td>
                         <td>{{ $task->due_date }}<t/td>
-                        <td><a href="{{ url('task/')}}/{{ $task->id}}"><i class="bi bi-eye"></i></a></td>
-                        <td><a href="{{ url('edit')}}/{{ $task->id}}"><i class="bi bi-pen"></i></a></td>
+                        <td><a href="{{ route('task.show', ['id' => $task->id]) }}"><i class="bi bi-eye"></i></a></td>
+                        <td><a href="{{ route('task.edit', ['id' => $task->id]) }}"><i class="bi bi-pen"></i></a></td>
                         <td>
                             <form action="{{ route('task.delete', ['id' => $task->id]) }}" method="post">
                                 @csrf

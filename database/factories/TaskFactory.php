@@ -14,7 +14,7 @@ class TaskFactory extends Factory
     public function definition()
     {
         return [
-            'task_name' => $this->faker->sentence,
+            'title' => $this->faker->sentence,
             'due_date' => $this->faker->dateTimeBetween('now', '+1 month'),
             'description' => $this->faker->text,
             'created_at' => now(),
@@ -23,14 +23,14 @@ class TaskFactory extends Factory
         ];
     }
 
-    public function configure()
-    {
-        return $this->afterCreating(function (Task $task) {
-            $user = auth()->user(); // Get the authenticated user
-            if ($user) {
-                $task->user_id = $user->id; // Assign user ID to the task
-                $task->save(); // Save the task with the user ID
-            }
-        });
-    }
+    // public function configure()
+    // {
+    //     return $this->afterCreating(function (Task $task) {
+    //         $user = auth()->user(); // Get the authenticated user
+    //         if ($user) {
+    //             $task->user_id = $user->id; // Assign user ID to the task
+    //             $task->save(); // Save the task with the user ID
+    //         }
+    //     });
+    // }
 }

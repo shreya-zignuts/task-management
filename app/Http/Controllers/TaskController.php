@@ -15,14 +15,14 @@ class TaskController extends Controller
     {
         // $tasks = auth()->user()->tasks;
         $tasks=Task::where('user_id', auth()->user()->id)->paginate(14);
-        return view('index-page', compact('tasks'));
+        return view('indexPage', compact('tasks'));
     }
 
     /**
      * Display the form for creating a new task.
      */
     public function view(){
-        return view('create-task-form');
+        return view('createTaskForm');
     }
 
     /**
@@ -31,12 +31,12 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $incomingFields = $request->validate([
-            'task_name' => "required",
+            'title' => "required",
             'description' => "required",
             'due_date' => "required|date|after_or_equal:today",
         ]);
 
-        $incomingFields['task_name'] = strip_tags($incomingFields['task_name']);
+        $incomingFields['title'] = strip_tags($incomingFields['title']);
         $incomingFields['due_date'] = strip_tags($incomingFields['due_date']);
         $incomingFields['description'] = strip_tags($incomingFields['description']);
         $incomingFields['user_id'] = auth()->id();
@@ -52,7 +52,7 @@ class TaskController extends Controller
      */
     public function edit($id){
         $task = Task::findOrFail($id);
-        return view('edit-task', ['task' => $task]);
+        return view('editTask', ['task' => $task]);
     }
     
     /**
@@ -60,7 +60,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id){
         $incomingFields = $request->validate([
-            'task_name' => "required",
+            'title' => "required",
             'description' => "required",
             'due_date' => "required|date|after_or_equal:today",
         ]);
@@ -76,7 +76,7 @@ class TaskController extends Controller
      */
     public function show($id){
         $task = Task::findOrFail($id);
-        return view ('view-task', ['task' => $task]);
+        return view ('viewtask', ['task' => $task]);
     }
 
     /**

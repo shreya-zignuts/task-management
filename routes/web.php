@@ -32,12 +32,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/view', [TaskController::class, 'view'])->name('task.view');
     Route::post('/store', [TaskController::class, 'store'])->name('task.store');
 
-    Route::get('/task/{id}', [TaskController::class, 'show']);
+});
+
+Route::group(['prefix' => 'task'], function(){
+    Route::get('/{id}', [TaskController::class, 'show'])->name('task.show');
     Route::get('/edit/{id}', [TaskController::class, 'edit'])->name('task.edit');
     Route::post('/update/{id}', [TaskController::class, 'update'])->name('task.update');
     Route::post('/delete/{id}', [TaskController::class, 'delete'])->name('task.delete');
 });
-
 
     
 require __DIR__.'/auth.php';
