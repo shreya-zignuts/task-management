@@ -27,16 +27,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/index', [TaskController::class, 'index'])->name('task.index');
+    Route::get('/view', [TaskController::class, 'view'])->name('task.view');
+    Route::post('/store', [TaskController::class, 'store'])->name('task.store');
+
+    Route::get('/task/{id}', [TaskController::class, 'show']);
+    Route::get('/edit/{id}', [TaskController::class, 'edit'])->name('task.edit');
+    Route::post('/update/{id}', [TaskController::class, 'update'])->name('task.update');
+    Route::post('/delete/{id}', [TaskController::class, 'delete'])->name('task.delete');
 });
 
-Route::get('/task/index', [TaskController::class, 'index'])->name('task.index');
-Route::get('/task/view', [TaskController::class, 'view'])->name('task.view');
-Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
 
-Route::get('/task/{id}', [TaskController::class, 'show']);
-Route::get('/task/edit/{id}', [TaskController::class, 'edit'])->name('task.edit');
-Route::post('/task/update/{id}', [TaskController::class, 'update'])->name('task.update');
-Route::post('/task/delete/{id}', [TaskController::class, 'delete'])->name('task.delete');
-
-
+    
 require __DIR__.'/auth.php';

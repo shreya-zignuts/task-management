@@ -10,10 +10,8 @@
 </head>
 <x-app-layout>
     <body>
+        <h3 class="text-center h3 mt-3">My Tasks</h3>
         <div class="container text-center">
-            <h2 class="text-lg font-medium text-gray-900 mt-5">
-                {{ __('My Tasks') }}
-             </h2>
             <table class="table table-secondary table-bordered mt-3">
                 <thead class="table-dark">
                     <tr>
@@ -28,7 +26,7 @@
                         <td>{{ $task->task_name }}</td>
                         <td>{{ $task->due_date }}<t/td>
                         <td><a href="{{ url('task/')}}/{{ $task->id}}"><i class="bi bi-eye"></i></a></td>
-                        <td><a href="{{ url('task/edit')}}/{{ $task->id}}"><i class="bi bi-pen"></i></a></td>
+                        <td><a href="{{ url('edit')}}/{{ $task->id}}"><i class="bi bi-pen"></i></a></td>
                         <td>
                             <form action="{{ route('task.delete', ['id' => $task->id]) }}" method="post">
                                 @csrf
@@ -37,13 +35,13 @@
                         </td>
                     </tr>
                     @endforeach
-                    
+                    {{ $tasks->links() }}
                 </tbody>
             </table>
         </div>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
             <div class="container text-center">
-                <a href="/task/view"><button class="btn btn-secondary p-2">Create New Task</button></a>
+                <a href="/view"><button class="btn btn-secondary p-2">Create New Task</button></a>
             </div>
             </x-app-layout>
     </body>

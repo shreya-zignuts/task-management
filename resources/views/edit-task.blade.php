@@ -14,12 +14,12 @@
         @csrf
     </form>
 
-    <form method="post" action="/task/update/{{ $task->id}}" class="mt-6 space-y-6">
+    <form method="post" action="/update/{{ $task->id}}" class="mt-6 space-y-6">
         @csrf
 
         <div>
-            <x-text-input id="users_id" name="users_id" type="hidden" class="mt-1 block w-full" required autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('users_id')" />
+            <x-text-input id="user_id" name="user_id" type="hidden" class="mt-1 block w-full" required autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('user_id')" />
         </div>
         
         <div>
@@ -30,12 +30,12 @@
         
         <div>
             <x-input-label for="description" :value="__(' Description ')" />
-            <textarea id="description" name="description" :value="old('description', $task->description)" class="mt-1 block w-full" required autocomplete="name"></textarea>
+            <textarea id="description" name="description" class="mt-1 block w-full" required autocomplete="name">{{ old('description', $task->description) }}</textarea>
             <x-input-error class="mt-2" :messages="$errors->get('description')" />
         </div>
         <div>
             <x-input-label for="due_date" :value="__('Due Date')" />
-            <x-text-input id="due_date" name="due_date" type="date" class="mt-1 block w-full" required autocomplete="name" />
+            <x-text-input id="due_date" name="due_date" type="date" :value="old('due_date', $task->due_date)" class="mt-1 block w-full" required autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('due_date')" />
         </div>
 

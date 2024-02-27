@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\UserFactory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 

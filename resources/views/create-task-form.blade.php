@@ -18,7 +18,7 @@
         @csrf
     </form>
 
-    <form method="post" action="/task/store" class="mt-6 space-y-6">
+    <form method="post" action="/store" class="mt-6 space-y-6">
         @csrf
 
         <div>
@@ -28,13 +28,13 @@
         
         <div>
             <x-input-label for="task_name" :value="__('Task Name')" />
-            <x-text-input id="task_name" name="task_name" type="text" class="mt-1 block w-full" required autocomplete="name" />
+            <x-text-input id="task_name" name="task_name" type="text" :value="old('task_name')" class="mt-1 block w-full" required autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('task_name')" />
         </div>
         
         <div>
             <x-input-label for="description" :value="__(' Description ')" />
-            <textarea id="description" name="description" class="mt-1 block w-full" required autocomplete="name"></textarea>
+            <textarea id="description" name="description" class="mt-1 block w-full" required autocomplete="name">{{ old('description') }}</textarea>
             <x-input-error class="mt-2" :messages="$errors->get('description')" />
         </div>
         <div>
