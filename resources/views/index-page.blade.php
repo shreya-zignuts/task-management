@@ -1,3 +1,8 @@
+@if(session('success'))
+    <div class="alert alert-dark text-center" role="alert" id="success">
+        {{ session('success') }}
+    </div>
+@endif
 <!DOCTYPE html>
 <html lang="en">
 <head>

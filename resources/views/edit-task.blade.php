@@ -40,11 +40,19 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button id="saveButton">{{ __('Save') }}</x-primary-button>
         </div>
     </form>
 </section>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("saveButton").addEventListener("click", function() {
+            var successMessage = "Task inserted successfully!"; // Replace this with your actual success message
+            document.getElementById("success").textContent = success;
+        });
+    });
+</script>
 
 </x-app-layout>
 

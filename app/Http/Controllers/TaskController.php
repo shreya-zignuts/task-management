@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\Task;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
@@ -72,7 +68,7 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $task->update($incomingFields);
 
-        return redirect()->route('task.index')->with('success', 'Task updated successfully');
+        return redirect()->route('task.index')->with('success', "Task updated successfully!");
     }
 
     /**
@@ -90,10 +86,10 @@ class TaskController extends Controller
 
         $task = Task::find($id);
         if(!$task){
-            return redirect()->route('task.index')->with('fail', 'Data not found');
+            return redirect()->route('task.index')->with('fail', 'Task Not found');
         }
         $task->delete();
-        return redirect()->route('task.index')->with('sucess', 'Data deleted');
+        return redirect()->route('task.index')->with('success', 'Task deleted successfully');
     }
 
 
