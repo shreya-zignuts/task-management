@@ -29,17 +29,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/index', [TaskController::class, 'index'])->name('task.index');
-    Route::get('/view', [TaskController::class, 'view'])->name('task.view');
+    Route::get('/create', [TaskController::class, 'create'])->name('task.create');
     Route::post('/store', [TaskController::class, 'store'])->name('task.store');
 
+    Route::group(['prefix' => 'task'], function(){
+        Route::get('/view/{id}', [TaskController::class, 'show'])->name('task.show');
+        Route::get('/edit/{id}', [TaskController::class, 'edit'])->name('task.edit');
+        Route::post('/update/{id}', [TaskController::class, 'update'])->name('task.update');
+        Route::post('/delete/{id}', [TaskController::class, 'delete'])->name('task.delete');
+    });
+
 });
 
-Route::group(['prefix' => 'task'], function(){
-    Route::get('/{id}', [TaskController::class, 'show'])->name('task.show');
-    Route::get('/edit/{id}', [TaskController::class, 'edit'])->name('task.edit');
-    Route::post('/update/{id}', [TaskController::class, 'update'])->name('task.update');
-    Route::post('/delete/{id}', [TaskController::class, 'delete'])->name('task.delete');
-});
 
     
 require __DIR__.'/auth.php';

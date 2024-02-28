@@ -21,8 +21,8 @@ class TaskController extends Controller
     /**
      * Display the form for creating a new task.
      */
-    public function view(){
-        return view('createTaskForm');
+    public function create(){
+        return view('task.createTaskForm');
     }
 
     /**
@@ -30,19 +30,17 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $incomingFields = $request->validate([
+        $request->validate([
             'title' => "required",
             'description' => "required",
             'due_date' => "required|date|after_or_equal:today",
         ]);
 
-        $incomingFields['title'] = strip_tags($incomingFields['title']);
-        $incomingFields['due_date'] = strip_tags($incomingFields['due_date']);
-        $incomingFields['description'] = strip_tags($incomingFields['description']);
-        $incomingFields['user_id'] = auth()->id();
-
-
-        $newTask = Task::create($incomingFields);
+        $task = auth()->user()->task()->create($request->only([
+            'title',
+            'description',
+            'due_date'
+        ]));
 
         return redirect()->route('task.index')->with('success', 'Task inserted successfully');
     }
@@ -52,7 +50,7 @@ class TaskController extends Controller
      */
     public function edit($id){
         $task = Task::findOrFail($id);
-        return view('editTask', ['task' => $task]);
+        return view('task.editTask', ['task' => $task]);
     }
     
     /**
@@ -76,7 +74,7 @@ class TaskController extends Controller
      */
     public function show($id){
         $task = Task::findOrFail($id);
-        return view ('viewtask', ['task' => $task]);
+        return view ('task.viewTask', ['task' => $task]);
     }
 
     /**

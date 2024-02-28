@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         // Seed other tables
 
-        $this->call(TasksTableSeeder::class);
+        $this->call(TaskSeeder::class);
     }
 
 }
