@@ -9,9 +9,10 @@ This is a simple Task Management System built using Laravel Breeze, a minimal au
 - Simple and intuitive UI
 
 ## Requirements
-- PHP >= 7.4
+- PHP >= 8.1
 - Composer
-- Node.js & NPM
+- Node.js >= 21.6.2
+- NPM >= 10.2.4
 - MySQL
 
 ## installation
@@ -20,7 +21,7 @@ Step 1: Clone the Repository
 
 Clone the repository to your local machine using Git.
 ```bash
-$ git clone https://github.com/yourusername/task-management-system.git
+$ git clone https://github.com/shreya-zignuts/task-management
 ```
 
 Step 2: Navigate to the Project Directory

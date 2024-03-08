@@ -33,7 +33,7 @@
                         
                         <div>
                             <x-input-label for="title" :value="__('Task Name')" />
-                            <x-text-input id="title" name="title" type="text" :value="old('title')" class="mt-1 block w-full" required autocomplete="name" />
+                            <x-text-input id="title" name="title" type="text" class="mt-1 block w-full" required autocomplete="name" />
                             <x-input-error class="mt-2" :messages="$errors->get('title')" />
                         </div>
                         
